@@ -1,5 +1,6 @@
 package cz.ptw.temperature.manager;
 
+import cz.ptw.temperature.MockedData;
 import cz.ptw.temperature.dao.TemperatureDao;
 import cz.ptw.temperature.domain.DateInterval;
 import cz.ptw.temperature.domain.TemperatureInformation;
@@ -40,26 +41,13 @@ public class TemperatureManagementTest {
         dateInterval = new DateInterval(new DateTime(), new DateTime().plusDays(5));
     }
 
-    private List<TemperatureInformation> fillTemperatureListByValues(String... probeNumbers) {
-        List<TemperatureInformation> temperatureInformations = new ArrayList<TemperatureInformation>();
-
-        for (String probeNumber : probeNumbers) {
-            temperatureInformations.add(new TemperatureInformation(probeNumber, 21, new DateTime().plusDays(0)));
-            temperatureInformations.add(new TemperatureInformation(probeNumber, 22, new DateTime().plusDays(1)));
-            temperatureInformations.add(new TemperatureInformation(probeNumber, 23, new DateTime().plusDays(2)));
-            temperatureInformations.add(new TemperatureInformation(probeNumber, 24, new DateTime().plusDays(3)));
-        }
-
-        return temperatureInformations;
-    }
-
     /**
      * Test for listing all temperatures for one probe
      */
     @Test
     public void listAllTemperatureInformationForOneProbe() {
         String[] probeNumbers = {"1"};
-        listOfTemperatures = fillTemperatureListByValues(probeNumbers);
+        listOfTemperatures = MockedData.fillTemperatureListByValues(probeNumbers);
 
         when(temperatureDao.findTemperatureInformationForProbe(probeNumbers)).thenReturn(listOfTemperatures);
         List<TemperatureInformation> temperatureInformations = temperatureManager.listTemperatureInformationForProbe(probeNumbers);
@@ -74,7 +62,7 @@ public class TemperatureManagementTest {
     @Test
     public void listAllTemperatureInformationForAllProbes() {
         String[] probeNumbers = {"1","2","3"};
-        listOfTemperatures = fillTemperatureListByValues(probeNumbers);
+        listOfTemperatures = MockedData.fillTemperatureListByValues(probeNumbers);
 
         when(temperatureDao.findTemperatureInformationForProbe(dateInterval)).thenReturn(listOfTemperatures);
         List<TemperatureInformation> temperatureInformations = temperatureManager.listTemperatureInformationForProbe(dateInterval);
@@ -91,7 +79,7 @@ public class TemperatureManagementTest {
     @Test
     public void listTemperatureInformationFromDateIntervalForOneProbe() {
         String[] probeNumbers = {"1"};
-        listOfTemperatures = fillTemperatureListByValues(probeNumbers);
+        listOfTemperatures = MockedData.fillTemperatureListByValues(probeNumbers);
 
         when(temperatureDao.findTemperatureInformationForProbe(probeNumbers, dateInterval)).thenReturn(listOfTemperatures);
         List<TemperatureInformation> temperatureInformations = temperatureManager.listTemperatureInformationForProbe(probeNumbers, dateInterval);
@@ -107,7 +95,7 @@ public class TemperatureManagementTest {
     @Test
     public void listAllTemperatureInformationForMultipleProbes() {
         String[] probeNumbers = {"1", "4"};
-        listOfTemperatures = fillTemperatureListByValues(probeNumbers);
+        listOfTemperatures = MockedData.fillTemperatureListByValues(probeNumbers);
 
         when(temperatureDao.findTemperatureInformationForProbe(probeNumbers)).thenReturn(listOfTemperatures);
         List<TemperatureInformation> temperatureInformations = temperatureManager.listTemperatureInformationForProbe(probeNumbers);
@@ -123,10 +111,7 @@ public class TemperatureManagementTest {
     public void addNewTemperatureInformationByOneProbe(){
 
         TemperatureInformation temperatureInformation = new TemperatureInformation("1", -30, new DateTime());
-
         temperatureManager.addNewTemperatureInformationRecord(temperatureInformation);
-
         verify(temperatureDao).saveTemperatureInformationToDb(temperatureInformation);
-
     }
 }

@@ -1,6 +1,7 @@
 package cz.ptw.temperature.manager;
 
 import cz.ptw.temperature.domain.DateInterval;
+import cz.ptw.temperature.domain.Probe;
 import cz.ptw.temperature.domain.TemperatureInformation;
 import org.springframework.stereotype.Service;
 
@@ -19,5 +20,9 @@ public interface TemperatureManager {
 
     List<TemperatureInformation> listTemperatureInformationForProbe(DateInterval dateInterval);
 
+    List<TemperatureInformation> listTemperatureInformationForProbe(List<Probe> probes);
+
     void addNewTemperatureInformationRecord(TemperatureInformation temperatureInformation);
+
+    List<TemperatureInformation> listTemperatureInformationForProbe();
 }

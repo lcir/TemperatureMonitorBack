@@ -2,10 +2,13 @@ package cz.ptw.temperature.manager.impl;
 
 import cz.ptw.temperature.dao.TemperatureDao;
 import cz.ptw.temperature.domain.DateInterval;
+import cz.ptw.temperature.domain.Probe;
 import cz.ptw.temperature.domain.TemperatureInformation;
+import cz.ptw.temperature.manager.ProbeManager;
 import cz.ptw.temperature.manager.TemperatureManager;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,6 +20,8 @@ public class TemperatureManagerImpl implements TemperatureManager {
 
     @Autowired
     private TemperatureDao temperatureDao;
+    @Autowired
+    private ProbeManager probeManager;
 
     @Override
     public List<TemperatureInformation> listTemperatureInformationForProbe(final String[] probeIds) {
@@ -31,6 +36,19 @@ public class TemperatureManagerImpl implements TemperatureManager {
     @Override
     public List<TemperatureInformation> listTemperatureInformationForProbe(DateInterval dateInterval) {
         return temperatureDao.findTemperatureInformationForProbe(dateInterval);
+    }
+
+    @Override
+    public List<TemperatureInformation> listTemperatureInformationForProbe(List<Probe> probes) {
+        List<String> probesIdList = new ArrayList<String>();
+        probes.forEach((c) -> probesIdList.add(c.getProbeId()));
+        return this.listTemperatureInformationForProbe(probesIdList.toArray(new String[probesIdList.size()]));
+    }
+    @Override
+    public List<TemperatureInformation> listTemperatureInformationForProbe() {
+        List<String> probesIdList = new ArrayList<String>();
+        probeManager.listAllPossibleProbes().forEach((c) -> probesIdList.add(c.getProbeId()));
+        return this.listTemperatureInformationForProbe(probesIdList.toArray(new String[probesIdList.size()]));
     }
 
     @Override

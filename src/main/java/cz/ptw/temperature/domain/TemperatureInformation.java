@@ -11,11 +11,15 @@ public class TemperatureInformation {
 
     private String probeId;
     private int temperature = 0;
-    private DateTime date;
+    private DateTime date = new DateTime();
 
     public TemperatureInformation(final String probeId, final int temperature, final DateTime date) {
-        this.temperature = temperature;
+        this(probeId, temperature);
         this.date = date;
+    }
+
+    public TemperatureInformation(final String probeId, final int temperature) {
+        this.temperature = temperature;
         this.probeId = probeId;
     }
 
