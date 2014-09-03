@@ -1,4 +1,4 @@
-package cz.ptw.temperature;
+package cz.ptw.temperature.manager;
 
 import cz.ptw.temperature.dao.TemperatureDao;
 import cz.ptw.temperature.domain.DateInterval;

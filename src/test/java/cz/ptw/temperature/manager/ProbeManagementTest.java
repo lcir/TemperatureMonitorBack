@@ -1,5 +1,6 @@
-package cz.ptw.temperature;
+package cz.ptw.temperature.manager;
 
+import cz.ptw.temperature.MockedData;
 import cz.ptw.temperature.dao.ProbesDao;
 import cz.ptw.temperature.domain.Probe;
 import cz.ptw.temperature.domain.TemperaturePeakInterval;
@@ -50,7 +51,7 @@ public class ProbeManagementTest {
     @Test
     public void listingAllPossibleProbes() {
 
-        allPossibleProbes = initializeTestingProbePool();
+        allPossibleProbes = MockedData.initializeTestingProbePool(toProbeDetail);
         when(probesDao.findAllProbes()).thenReturn(allPossibleProbes);
 
         List<Probe> probeList = probeManager.listAllPossibleProbes();
@@ -58,7 +59,6 @@ public class ProbeManagementTest {
         verify(probesDao).findAllProbes();
         Assert.assertEquals(probeList.size(), allPossibleProbes.size());
     }
-
 
     /**
      * Test to printing detail about selected probe
@@ -100,17 +100,6 @@ public class ProbeManagementTest {
         verify(probesDao).deleteProbe(probeId);
 
         assertTrue(isDeleted);
-    }
-
-    private List<Probe> initializeTestingProbePool() {
-
-        List<Probe> testedProbesPool = new ArrayList<Probe>();
-
-        testedProbesPool.add(toProbeDetail);
-        testedProbesPool.add(new Probe("2", "At Closet", new TemperaturePeakInterval(-10, 20)));
-        testedProbesPool.add(new Probe("3", "At bar"));
-
-        return testedProbesPool;
     }
 }
 
