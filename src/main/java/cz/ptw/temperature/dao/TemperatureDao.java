@@ -19,4 +19,6 @@ public interface TemperatureDao {
     List<TemperatureInformation> findTemperatureInformationForProbe(DateInterval dateInterval);
 
     List<TemperatureInformation> findTemperatureInformationForProbe(String[] probeIds, DateInterval dateInterval);
+
+    void saveTemperatureInformationToDb(TemperatureInformation temperatureInformation);
 }

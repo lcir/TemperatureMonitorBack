@@ -23,4 +23,8 @@ public class MockedData {
 
         return testedProbesPool;
     }
+
+    public static Probe initializeFirstProbe() {
+        return new Probe("1", "At bedroom", new TemperaturePeakInterval(-10, 20));
+    }
 }

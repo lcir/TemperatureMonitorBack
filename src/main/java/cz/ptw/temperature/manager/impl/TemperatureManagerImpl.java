@@ -32,4 +32,9 @@ public class TemperatureManagerImpl implements TemperatureManager {
     public List<TemperatureInformation> listTemperatureInformationForProbe(DateInterval dateInterval) {
         return temperatureDao.findTemperatureInformationForProbe(dateInterval);
     }
+
+    @Override
+    public void addNewTemperatureInformationRecord(TemperatureInformation temperatureInformation) {
+        temperatureDao.saveTemperatureInformationToDb(temperatureInformation);
+    }
 }

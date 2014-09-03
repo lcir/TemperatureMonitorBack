@@ -115,4 +115,18 @@ public class TemperatureManagementTest {
 
         Assert.assertEquals(temperatureInformations.size(), 8);
     }
+
+    /**
+     * Test to add new temperature information
+     */
+    @Test
+    public void addNewTemperatureInformationByOneProbe(){
+
+        TemperatureInformation temperatureInformation = new TemperatureInformation("1", -30, new DateTime());
+
+        temperatureManager.addNewTemperatureInformationRecord(temperatureInformation);
+
+        verify(temperatureDao).saveTemperatureInformationToDb(temperatureInformation);
+
+    }
 }

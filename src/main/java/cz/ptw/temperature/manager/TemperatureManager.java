@@ -18,4 +18,6 @@ public interface TemperatureManager {
     List<TemperatureInformation> listTemperatureInformationForProbe(String[] probeIds, DateInterval dateInterval);
 
     List<TemperatureInformation> listTemperatureInformationForProbe(DateInterval dateInterval);
+
+    void addNewTemperatureInformationRecord(TemperatureInformation temperatureInformation);
 }

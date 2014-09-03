@@ -41,7 +41,7 @@ public class ProbeManagementTest {
 
     @Before
     public void setUp() {
-        toProbeDetail = new Probe("1", "At bedroom", new TemperaturePeakInterval(-10, 20));
+        toProbeDetail = MockedData.initializeFirstProbe();
 
     }
 

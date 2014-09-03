@@ -41,10 +41,9 @@ public class ProbeDaoTest {
     private Probe toProbeDetail;
     private Query searchProbeQuery;
 
-
     @Before
     public void setUp() {
-        toProbeDetail = new Probe("1", "At bedroom", new TemperaturePeakInterval(-10, 20));
+        toProbeDetail = MockedData.initializeFirstProbe();
         searchProbeQuery = new Query(Criteria.where("probeId").is(toProbeDetail.getProbeId()));
     }
 
