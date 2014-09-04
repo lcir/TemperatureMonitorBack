@@ -110,7 +110,7 @@ public class TemperatureManagementTest {
     @Test
     public void addNewTemperatureInformationByOneProbe(){
 
-        TemperatureInformation temperatureInformation = new TemperatureInformation("1", -30, new DateTime());
+        TemperatureInformation temperatureInformation = new TemperatureInformation("1", -30, new DateTime().toDate());
         temperatureManager.addNewTemperatureInformationRecord(temperatureInformation);
         verify(temperatureDao).saveTemperatureInformationToDb(temperatureInformation);
     }

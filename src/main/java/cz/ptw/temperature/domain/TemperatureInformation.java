@@ -1,19 +1,19 @@
 package cz.ptw.temperature.domain;
 
-import org.joda.time.DateTime;
+import java.util.Date;
 
 /**
  * User: t945135
- * DateTime: 3.9.14
+ * Date: 3.9.14
  * Time: 12:58
  */
 public class TemperatureInformation {
 
     private String probeId;
     private int temperature = 0;
-    private DateTime date = new DateTime();
+    private Date date = new Date();
 
-    public TemperatureInformation(final String probeId, final int temperature, final DateTime date) {
+    public TemperatureInformation(final String probeId, final int temperature, final Date date) {
         this(probeId, temperature);
         this.date = date;
     }
@@ -39,11 +39,11 @@ public class TemperatureInformation {
         this.temperature = temperature;
     }
 
-    public DateTime getDateTime() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDateTime(DateTime date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 }
