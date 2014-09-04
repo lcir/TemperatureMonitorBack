@@ -36,7 +36,7 @@ public class ProbeControllerTest {
     private ProbeManager probeManager;
 
     @InjectMocks
-    private ProbeController probeController = new ProbeController();
+    private ProbeController probeController;
     private Probe firstProbe;
 
     @Before

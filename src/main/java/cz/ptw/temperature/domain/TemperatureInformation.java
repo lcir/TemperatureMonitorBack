@@ -1,5 +1,7 @@
 package cz.ptw.temperature.domain;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.Date;
 
 /**
@@ -7,6 +9,7 @@ import java.util.Date;
  * Date: 3.9.14
  * Time: 12:58
  */
+@Document(collection = "temperatures")
 public class TemperatureInformation {
 
     private String probeId;
@@ -21,6 +24,9 @@ public class TemperatureInformation {
     public TemperatureInformation(final String probeId, final int temperature) {
         this.temperature = temperature;
         this.probeId = probeId;
+    }
+
+    public TemperatureInformation() {
     }
 
     public String getProbeId() {

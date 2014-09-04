@@ -33,7 +33,7 @@ public class TemperatureControllerTest {
     private ProbeManager probeManager;
 
     @InjectMocks
-    private TemperatureController temperatureController = new TemperatureController();
+    private TemperatureController temperatureController;
     private List<TemperatureInformation> listOfTemperatures;
 
     @Before
