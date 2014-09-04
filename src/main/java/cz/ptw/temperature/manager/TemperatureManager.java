@@ -3,7 +3,6 @@ package cz.ptw.temperature.manager;
 import cz.ptw.temperature.domain.DateInterval;
 import cz.ptw.temperature.domain.Probe;
 import cz.ptw.temperature.domain.TemperatureInformation;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -12,7 +11,6 @@ import java.util.List;
  * Date: 3.9.14
  * Time: 12:49
  */
-@Service("temperatureManager")
 public interface TemperatureManager {
     List<TemperatureInformation> listTemperatureInformationForProbe(String[] probeIds);
 

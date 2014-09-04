@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -14,6 +15,7 @@ import java.util.List;
  * Date: 3.9.14
  * Time: 20:45
  */
+@Repository("probesDao")
 public class ProbesDaoImpl implements ProbesDao {
 
     @Autowired

@@ -4,6 +4,7 @@ import cz.ptw.temperature.dao.ProbesDao;
 import cz.ptw.temperature.domain.Probe;
 import cz.ptw.temperature.manager.ProbeManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
  * Date: 3.9.14
  * Time: 19:35
  */
+@Service("probeManager")
 public class ProbeManagerImpl implements ProbeManager {
 
     @Autowired

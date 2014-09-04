@@ -7,6 +7,7 @@ import cz.ptw.temperature.domain.TemperatureInformation;
 import cz.ptw.temperature.manager.ProbeManager;
 import cz.ptw.temperature.manager.TemperatureManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.List;
  * Date: 3.9.14
  * Time: 13:17
  */
+@Service("temperatureManager")
 public class TemperatureManagerImpl implements TemperatureManager {
 
     @Autowired
