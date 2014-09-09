@@ -43,4 +43,11 @@ public class Probe {
     }
 
 
+    public boolean checkTemperaturePeakInterval(TemperatureInformation temperatureInformation) {
+        if ((temperaturePeakInterval.getLowIntervalPeak() >= temperatureInformation.getTemperature()) ||
+                (temperaturePeakInterval.getHighIntervalPeak() <= temperatureInformation.getTemperature())) {
+            return true;
+        }
+        return false;
+    }
 }

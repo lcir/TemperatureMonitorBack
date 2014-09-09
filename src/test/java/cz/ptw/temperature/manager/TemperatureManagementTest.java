@@ -4,7 +4,6 @@ import cz.ptw.temperature.MockedData;
 import cz.ptw.temperature.dao.TemperatureDao;
 import cz.ptw.temperature.domain.DateInterval;
 import cz.ptw.temperature.domain.TemperatureInformation;
-import cz.ptw.temperature.manager.TemperatureManager;
 import cz.ptw.temperature.manager.impl.TemperatureManagerImpl;
 import org.joda.time.DateTime;
 import org.junit.Assert;
@@ -15,7 +14,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.mockito.Mockito.verify;
@@ -32,6 +30,9 @@ public class TemperatureManagementTest {
     private TemperatureManager temperatureManager = new TemperatureManagerImpl();
     @Mock
     private TemperatureDao temperatureDao;
+
+    @Mock
+    private ProbeManager probeManager;
 
     private List<TemperatureInformation> listOfTemperatures;
     private DateInterval dateInterval;
@@ -113,5 +114,19 @@ public class TemperatureManagementTest {
         TemperatureInformation temperatureInformation = new TemperatureInformation("1", -30, new DateTime().toDate());
         temperatureManager.addNewTemperatureInformationRecord(temperatureInformation);
         verify(temperatureDao).saveTemperatureInformationToDb(temperatureInformation);
+    }
+
+    /**
+     * Test to check temperature peak
+     */
+    @Test
+    public void checkTemperatureGotPeak(){
+
+        TemperatureInformation temperatureInformation = new TemperatureInformation("1", -30, new DateTime().toDate());
+
+        when(probeManager.showDetailOfProbe(temperatureInformation.getProbeId())).thenReturn(MockedData.initializeFirstProbe());
+        temperatureManager.checkTemperatureGetPeak(temperatureInformation);
+
+        verify((probeManager)).showDetailOfProbe(temperatureInformation.getProbeId());
     }
 }

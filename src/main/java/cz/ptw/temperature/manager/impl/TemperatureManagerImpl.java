@@ -54,6 +54,12 @@ public class TemperatureManagerImpl implements TemperatureManager {
     }
 
     @Override
+    public boolean checkTemperatureGetPeak(TemperatureInformation temperatureInformation) {
+        Probe temperatureProbe = probeManager.showDetailOfProbe(temperatureInformation.getProbeId());
+        return temperatureProbe.checkTemperaturePeakInterval(temperatureInformation);
+    }
+
+    @Override
     public void addNewTemperatureInformationRecord(TemperatureInformation temperatureInformation) {
         temperatureDao.saveTemperatureInformationToDb(temperatureInformation);
     }

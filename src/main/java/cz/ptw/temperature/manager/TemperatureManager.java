@@ -23,4 +23,6 @@ public interface TemperatureManager {
     void addNewTemperatureInformationRecord(TemperatureInformation temperatureInformation);
 
     List<TemperatureInformation> listTemperatureInformationForProbe();
+
+    boolean checkTemperatureGetPeak(TemperatureInformation temperatureInformation);
 }
