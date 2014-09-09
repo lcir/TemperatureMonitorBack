@@ -1,5 +1,6 @@
 package cz.ptw.temperature.domain;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -9,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
  * Time: 13:23
  */
 @Document(collection = "probes")
-public class Probe {
+public class Probe extends JsonAbstractObject {
 
     @Id
     private String probeId;

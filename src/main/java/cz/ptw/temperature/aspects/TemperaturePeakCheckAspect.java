@@ -1,11 +1,14 @@
 package cz.ptw.temperature.aspects;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import cz.ptw.temperature.domain.TemperatureInformation;
 import cz.ptw.temperature.manager.AlertManager;
 import cz.ptw.temperature.manager.TemperatureManager;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -15,6 +18,8 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 @Aspect
 public class TemperaturePeakCheckAspect {
+
+    private static final Logger LOG = LoggerFactory.getLogger(TemperaturePeakCheckAspect.class);
 
     @Autowired
     private TemperatureManager temperatureManager;
@@ -31,8 +36,12 @@ public class TemperaturePeakCheckAspect {
                 TemperatureInformation temperatureInformation = (TemperatureInformation) args[0];
 
                 if (temperatureManager.checkTemperatureGetPeak(temperatureInformation)) {
-                    alertManager.createMobileTemperaturePeakAlert(temperatureInformation);
-                    return true;
+                    try {
+                        alertManager.createMobileTemperaturePeakAlert(temperatureInformation);
+                        return true;
+                    } catch (JsonProcessingException e) {
+                        LOG.error("Sending of message fails");
+                    }
                 }
             }
         }

@@ -1,5 +1,6 @@
 package cz.ptw.temperature.aspects;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import cz.ptw.temperature.MockedData;
 import cz.ptw.temperature.dao.TemperatureDao;
 import cz.ptw.temperature.domain.DateInterval;
@@ -54,7 +55,7 @@ public class TemperaturePeakAspectTest {
      * Test invoking of aspect. This test will be positive
      */
     @Test
-    public void invokingAspectWithPositiveValue() {
+    public void invokingAspectWithPositiveValue() throws JsonProcessingException {
         when(temperatureManager.checkTemperatureGetPeak(temperatureInformation)).thenReturn(true);
 
         boolean resultOfAspect = temperaturePeakCheckAspect.checkTemperaturePeak(joinPoint);

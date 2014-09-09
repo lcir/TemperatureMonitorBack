@@ -1,5 +1,6 @@
 package cz.ptw.temperature.domain;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
@@ -10,7 +11,7 @@ import java.util.Date;
  * Time: 12:58
  */
 @Document(collection = "temperatures")
-public class TemperatureInformation {
+public class TemperatureInformation extends JsonAbstractObject{
 
     private String probeId;
     private int temperature = 0;
