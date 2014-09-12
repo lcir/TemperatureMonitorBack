@@ -2,6 +2,7 @@ package cz.ptw.temperature.manager;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.google.android.gcm.server.Message;
+import com.google.android.gcm.server.Sender;
 import cz.ptw.temperature.MockedData;
 import cz.ptw.temperature.domain.TemperatureInformation;
 import cz.ptw.temperature.manager.impl.AlertManagerImpl;
@@ -17,6 +18,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyInt;
+import static org.mockito.Matchers.anyList;
+import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -31,6 +36,11 @@ public class AlertManagerTest {
     private AlertManager alertManager = new AlertManagerImpl();
     @Mock
     private ProbeManager probeManager;
+    @Mock
+    private RegistrantManager registrantManager;
+    @Mock
+    private Sender gcmSender;
+
     private TemperatureInformation temperatureInformation;
     private Message message;
     private Method createAlertMessage;
@@ -78,8 +88,17 @@ public class AlertManagerTest {
      */
     @Test
     public void checkIfMessageWillBeSend() throws Exception {
+
+        Message sendMessage = messageBuilder();
+
+        when(registrantManager.showAllAvailableRegistrantIds()).thenReturn(MockedData.initialiseSomeRegistrantIds());
         when(probeManager.showDetailOfProbe(temperatureInformation.getProbeId())).thenReturn(MockedData.initializeFirstProbe());
+        when(gcmSender.send(sendMessage, registrantManager.showAllAvailableRegistrantIds(), 10)).thenReturn(null);
+
         alertManager.createMobileTemperaturePeakAlert(temperatureInformation);
+
+        verify(registrantManager, atLeastOnce()).showAllAvailableRegistrantIds();
+        verify(gcmSender).send(any(Message.class), anyList(), anyInt());
         verify(probeManager).showDetailOfProbe(temperatureInformation.getProbeId());
     }
 

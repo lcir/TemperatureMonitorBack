@@ -22,6 +22,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import java.io.IOException;
 import java.util.List;
 
 import static com.mongodb.util.MyAsserts.assertFalse;
@@ -55,7 +56,7 @@ public class TemperaturePeakAspectTest {
      * Test invoking of aspect. This test will be positive
      */
     @Test
-    public void invokingAspectWithPositiveValue() throws JsonProcessingException {
+    public void invokingAspectWithPositiveValue() throws IOException {
         when(temperatureManager.checkTemperatureGetPeak(temperatureInformation)).thenReturn(true);
 
         boolean resultOfAspect = temperaturePeakCheckAspect.checkTemperaturePeak(joinPoint);

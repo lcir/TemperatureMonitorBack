@@ -11,6 +11,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.IOException;
+
 /**
  * User: T945135
  * Date: 9.9.14
@@ -39,7 +41,7 @@ public class TemperaturePeakCheckAspect {
                     try {
                         alertManager.createMobileTemperaturePeakAlert(temperatureInformation);
                         return true;
-                    } catch (JsonProcessingException e) {
+                    } catch (IOException e) {
                         LOG.error("Sending of message fails");
                     }
                 }

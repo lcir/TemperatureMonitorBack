@@ -1,5 +1,6 @@
 package cz.ptw.temperature;
 
+import cz.ptw.temperature.domain.Phone;
 import cz.ptw.temperature.domain.Probe;
 import cz.ptw.temperature.domain.TemperatureInformation;
 import cz.ptw.temperature.domain.TemperaturePeakInterval;
@@ -41,5 +42,26 @@ public class MockedData {
         }
 
         return temperatureInformations;
+    }
+
+    public static List<String> initialiseSomeRegistrantIds() {
+        List<String> listOfRegistrantIds = new ArrayList<>();
+        listOfRegistrantIds.add("someMobile");
+        listOfRegistrantIds.add("someMegaSizedMobile");
+        return listOfRegistrantIds;
+    }
+
+    public static List<Phone> initializeSomeMobilePhones() {
+        List<Phone> phoneList = new ArrayList<>();
+
+        phoneList.add(new Phone("somePhone"));
+        phoneList.add(new Phone("superHeroicMobile"));
+
+        return phoneList;
+    }
+
+    public static Phone initializeNewMobilePhone() {
+        Phone newMockedPhone = new Phone("somePhone");
+        return newMockedPhone;
     }
 }
