@@ -1,8 +1,6 @@
 package cz.ptw.temperature.domain;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
@@ -11,8 +9,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
  * Time: 21:27
  */
 @Document(collection = "phones")
-public class Phone extends JsonAbstractObject{
+public class Phone extends JsonAbstractObject {
 
+    @Id
     private String mobileIdentification;
 
     public Phone(String mobileIdentification) {

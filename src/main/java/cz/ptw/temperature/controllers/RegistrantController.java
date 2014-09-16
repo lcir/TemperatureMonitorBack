@@ -19,7 +19,7 @@ public class RegistrantController {
     @Autowired
     private RegistrantManager registrantManager;
 
-    @RequestMapping(value = "/rest/phone/add", method = RequestMethod.POST, params = {"phoneId"})
+    @RequestMapping(value = "/rest/phone/add", method = RequestMethod.GET, params = {"phoneId"})
     public void addNewPhone(@RequestParam("phoneId") String mobileIdentification) {
         registrantManager.addNewMobilePhone(new Phone(mobileIdentification));
     }

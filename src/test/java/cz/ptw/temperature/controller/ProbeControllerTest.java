@@ -2,10 +2,7 @@ package cz.ptw.temperature.controller;
 
 import cz.ptw.temperature.MockedData;
 import cz.ptw.temperature.controllers.ProbeController;
-import cz.ptw.temperature.dao.ProbesDao;
-import cz.ptw.temperature.dao.impl.ProbesDaoImpl;
 import cz.ptw.temperature.domain.Probe;
-import cz.ptw.temperature.domain.TemperaturePeakInterval;
 import cz.ptw.temperature.manager.ProbeManager;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,13 +10,10 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-import org.springframework.data.mongodb.core.MongoOperations;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
 
 import java.util.List;
 
-import static com.mongodb.util.MyAsserts.assertEquals;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.anyObject;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;

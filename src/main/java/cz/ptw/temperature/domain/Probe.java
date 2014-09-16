@@ -1,6 +1,5 @@
 package cz.ptw.temperature.domain;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 

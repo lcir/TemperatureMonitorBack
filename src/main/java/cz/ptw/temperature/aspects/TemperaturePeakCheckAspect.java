@@ -1,6 +1,5 @@
 package cz.ptw.temperature.aspects;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import cz.ptw.temperature.domain.TemperatureInformation;
 import cz.ptw.temperature.manager.AlertManager;
 import cz.ptw.temperature.manager.TemperatureManager;

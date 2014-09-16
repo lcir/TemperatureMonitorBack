@@ -1,10 +1,8 @@
 package cz.ptw.temperature.dao;
 
 import cz.ptw.temperature.MockedData;
-import cz.ptw.temperature.dao.impl.ProbesDaoImpl;
 import cz.ptw.temperature.dao.impl.TemperatureDaoImpl;
 import cz.ptw.temperature.domain.DateInterval;
-import cz.ptw.temperature.domain.Probe;
 import cz.ptw.temperature.domain.TemperatureInformation;
 import org.joda.time.DateTime;
 import org.junit.Before;
@@ -19,9 +17,7 @@ import org.springframework.data.mongodb.core.query.Query;
 
 import java.util.List;
 
-import static com.mongodb.util.MyAsserts.assertEquals;
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyObject;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 

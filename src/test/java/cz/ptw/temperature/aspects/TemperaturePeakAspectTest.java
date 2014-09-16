@@ -1,20 +1,12 @@
 package cz.ptw.temperature.aspects;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import cz.ptw.temperature.MockedData;
-import cz.ptw.temperature.dao.TemperatureDao;
-import cz.ptw.temperature.domain.DateInterval;
 import cz.ptw.temperature.domain.TemperatureInformation;
 import cz.ptw.temperature.manager.AlertManager;
-import cz.ptw.temperature.manager.ProbeManager;
 import cz.ptw.temperature.manager.TemperatureManager;
-import cz.ptw.temperature.manager.impl.TemperatureManagerImpl;
-import junit.framework.TestCase;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.reflect.SourceLocation;
 import org.joda.time.DateTime;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,10 +15,9 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.io.IOException;
-import java.util.List;
 
-import static com.mongodb.util.MyAsserts.assertFalse;
-import static com.mongodb.util.MyAsserts.assertTrue;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
