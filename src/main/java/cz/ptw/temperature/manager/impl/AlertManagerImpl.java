@@ -9,6 +9,7 @@ import cz.ptw.temperature.exceptions.DatabaseFetchingProblem;
 import cz.ptw.temperature.manager.AlertManager;
 import cz.ptw.temperature.manager.ProbeManager;
 import cz.ptw.temperature.manager.RegistrantManager;
+import cz.ptw.temperature.utils.JsonWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -47,8 +48,8 @@ public class AlertManagerImpl implements AlertManager {
         }
 
         return new Message.Builder()
-                .addData("probe", probeToAlert.toJson())
-                .addData("temperature", temperatureInformation.toJson())
+                .addData("probe", JsonWriter.toJson(probeToAlert))
+                .addData("temperature", JsonWriter.toJson(temperatureInformation))
                 .build();
     }
 }

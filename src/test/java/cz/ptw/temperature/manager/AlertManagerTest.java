@@ -6,6 +6,7 @@ import com.google.android.gcm.server.Sender;
 import cz.ptw.temperature.MockedData;
 import cz.ptw.temperature.domain.TemperatureInformation;
 import cz.ptw.temperature.manager.impl.AlertManagerImpl;
+import cz.ptw.temperature.utils.JsonWriter;
 import org.joda.time.DateTime;
 import org.junit.Before;
 import org.junit.Test;
@@ -105,9 +106,9 @@ public class AlertManagerTest {
     private Message messageBuilder() throws JsonProcessingException {
 
         return new Message.Builder()
-                .addData("probe", MockedData.initializeFirstProbe().toJson())
-                .addData("temperature", temperatureInformation.toJson())
-                .build();
+                .addData("probe", JsonWriter.toJson(MockedData.initializeFirstProbe()))
+                .addData("temperature", JsonWriter.toJson(temperatureInformation))
+                        .build();
 
     }
 }

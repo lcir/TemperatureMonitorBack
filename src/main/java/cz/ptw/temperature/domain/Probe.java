@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
  * Time: 13:23
  */
 @Document(collection = "probes")
-public class Probe extends JsonAbstractObject {
+public class Probe {
 
     @Id
     private String probeId;

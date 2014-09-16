@@ -10,7 +10,7 @@ import java.util.Date;
  * Time: 12:58
  */
 @Document(collection = "temperatures")
-public class TemperatureInformation extends JsonAbstractObject{
+public class TemperatureInformation {
 
     private String probeId;
     private int temperature = 0;

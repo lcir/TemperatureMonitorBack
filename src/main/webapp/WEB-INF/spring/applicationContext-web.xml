@@ -6,7 +6,6 @@
           http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <!--<context:component-scan base-package="cz.ptw.temperature.domain"/>-->
     <context:component-scan base-package="cz.ptw.temperature.manager"/>
     <context:component-scan base-package="cz.ptw.temperature.dao"/>
     <context:component-scan base-package="cz.ptw.temperature.controllers"/>
