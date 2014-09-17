@@ -10,10 +10,10 @@ import cz.ptw.temperature.manager.AlertManager;
 import cz.ptw.temperature.manager.ProbeManager;
 import cz.ptw.temperature.manager.RegistrantManager;
 import cz.ptw.temperature.utils.JsonWriter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.io.IOException;
 
 /**
  * User: T945135
@@ -22,6 +22,8 @@ import java.io.IOException;
  */
 @Service("alertManager")
 public class AlertManagerImpl implements AlertManager {
+
+    private static final Logger LOG = LoggerFactory.getLogger(AlertManager.class);
 
     @Autowired
     private ProbeManager probeManager;
@@ -32,11 +34,14 @@ public class AlertManagerImpl implements AlertManager {
 
 
     @Override
-    public void createMobileTemperaturePeakAlert(TemperatureInformation temperatureInformation) throws IOException {
+    public void createMobileTemperaturePeakAlert(TemperatureInformation temperatureInformation) {
 
-        Message toSendMessage = createAlertMessage(temperatureInformation);
-        gcmSender.send(toSendMessage, registrantManager.showAllAvailableRegistrantIds(), 10);
-
+        try {
+            Message toSendMessage = createAlertMessage(temperatureInformation);
+            gcmSender.send(toSendMessage, registrantManager.showAllAvailableRegistrantIds(), 10);
+        } catch (Exception ex) {
+            LOG.error(ex.getLocalizedMessage());
+        }
     }
 
     private Message createAlertMessage(TemperatureInformation temperatureInformation) throws JsonProcessingException, DatabaseFetchingProblem {

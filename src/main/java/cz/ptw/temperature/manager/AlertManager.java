@@ -2,8 +2,6 @@ package cz.ptw.temperature.manager;
 
 import cz.ptw.temperature.domain.TemperatureInformation;
 
-import java.io.IOException;
-
 /**
  * User: T945135
  * Date: 9.9.14
@@ -11,6 +9,6 @@ import java.io.IOException;
  */
 public interface AlertManager {
 
-    void createMobileTemperaturePeakAlert(TemperatureInformation temperatureInformation) throws IOException;
+    void createMobileTemperaturePeakAlert(TemperatureInformation temperatureInformation) ;
 
 }

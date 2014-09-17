@@ -31,21 +31,20 @@ public class TemperaturePeakCheckAspect {
     public boolean checkTemperaturePeak(final JoinPoint joinPoint) {
 
         Object[] args = joinPoint.getArgs();
+        LOG.debug("Running temperature peak check");
 
         if ((args != null) && (args.length > 0)) {
             if (args[0] instanceof TemperatureInformation) {
                 TemperatureInformation temperatureInformation = (TemperatureInformation) args[0];
 
                 if (temperatureManager.checkTemperatureGetPeak(temperatureInformation)) {
-                    try {
-                        alertManager.createMobileTemperaturePeakAlert(temperatureInformation);
-                        return true;
-                    } catch (IOException e) {
-                        LOG.error("Sending of message fails");
-                    }
+                    alertManager.createMobileTemperaturePeakAlert(temperatureInformation);
+                    LOG.debug("Temperature with peak");
+                    return true;
                 }
             }
         }
+        LOG.debug("Temperature without peak");
         return false;
     }
 }

@@ -6,7 +6,7 @@
 
 
     <bean id="gcmSender" class="com.google.android.gcm.server.Sender">
-        <constructor-arg name="key" value="" />
+        <constructor-arg name="key" value="key" />
     </bean>
 
 </beans>
