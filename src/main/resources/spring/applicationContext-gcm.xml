@@ -4,9 +4,17 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="ignoreResourceNotFound" value="true"/>
+        <property name="locations">
+            <list>
+                <value>classpath:config/gcm.properties</value>
+            </list>
+        </property>
+    </bean>
 
     <bean id="gcmSender" class="com.google.android.gcm.server.Sender">
-        <constructor-arg name="key" value="key" />
+        <constructor-arg name="key" value="${com.google.gcm.server.key}" />
     </bean>
 
 </beans>

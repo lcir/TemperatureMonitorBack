@@ -2,6 +2,7 @@ package cz.ptw.temperature.manager.impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.google.android.gcm.server.Message;
+import com.google.android.gcm.server.MulticastResult;
 import com.google.android.gcm.server.Sender;
 import cz.ptw.temperature.domain.Probe;
 import cz.ptw.temperature.domain.TemperatureInformation;
@@ -38,7 +39,11 @@ public class AlertManagerImpl implements AlertManager {
 
         try {
             Message toSendMessage = createAlertMessage(temperatureInformation);
-            gcmSender.send(toSendMessage, registrantManager.showAllAvailableRegistrantIds(), 10);
+            MulticastResult result = gcmSender.send(toSendMessage, registrantManager.showAllAvailableRegistrantIds(), 10);
+
+            if (result != null) {
+                LOG.debug("Successful: " + result.getSuccess() + ", failed: " + result.getFailure());
+            }
         } catch (Exception ex) {
             LOG.error(ex.getLocalizedMessage());
         }

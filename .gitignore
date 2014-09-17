@@ -1,3 +1,4 @@
 .idea/
 atlassian-ide-plugin.xml
 *.iml
+/src/main/resources/config/gcm.properties
