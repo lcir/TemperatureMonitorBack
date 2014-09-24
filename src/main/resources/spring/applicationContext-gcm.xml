@@ -9,6 +9,7 @@
         <property name="locations">
             <list>
                 <value>classpath:config/gcm.properties</value>
+                <value>classpath*:gcm.properties</value>
             </list>
         </property>
     </bean>
