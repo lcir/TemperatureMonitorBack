@@ -33,7 +33,6 @@ public class AlertManagerImpl implements AlertManager {
     @Autowired
     private Sender gcmSender;
 
-
     @Override
     public void createMobileTemperaturePeakAlert(TemperatureInformation temperatureInformation) {
 

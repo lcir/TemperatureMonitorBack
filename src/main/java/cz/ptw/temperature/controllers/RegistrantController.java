@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * User: T945135
@@ -20,7 +21,11 @@ public class RegistrantController {
     private RegistrantManager registrantManager;
 
     @RequestMapping(value = "/rest/phone/add", method = RequestMethod.GET, params = {"phoneId"})
-    public void addNewPhone(@RequestParam("phoneId") String mobileIdentification) {
+    public
+    @ResponseBody
+    String addNewPhone(@RequestParam("phoneId") String mobileIdentification) {
         registrantManager.addNewMobilePhone(new Phone(mobileIdentification));
+
+        return "OK";
     }
 }

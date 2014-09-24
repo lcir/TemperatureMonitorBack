@@ -37,7 +37,11 @@ public class TemperatureController {
     }
 
     @RequestMapping(value = "/rest/temp/add", method = RequestMethod.GET, params = {"probeId", "temperature"})
-    public void addTemperatureInformation(@RequestParam("probeId") String probeId, @RequestParam("temperature") int temperature) {
+    public
+    @ResponseBody
+    String addTemperatureInformation(@RequestParam("probeId") String probeId, @RequestParam("temperature") int temperature) {
         temperatureManager.addNewTemperatureInformationRecord(new TemperatureInformation(probeId, temperature));
+
+        return "OK";
     }
 }
