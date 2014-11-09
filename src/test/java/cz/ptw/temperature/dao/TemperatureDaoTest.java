@@ -49,7 +49,7 @@ public class TemperatureDaoTest {
     @Test
     public void saveNewTemperatureInformationIntoDb() {
 
-        TemperatureInformation temperatureInformation = new TemperatureInformation("1", 20);
+        TemperatureInformation temperatureInformation = new TemperatureInformation("1", 20d);
 
         temperatureDao.saveTemperatureInformationToDb(temperatureInformation);
         verify(mongoOperations).save(temperatureInformation);

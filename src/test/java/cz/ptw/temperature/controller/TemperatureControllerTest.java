@@ -106,7 +106,7 @@ public class TemperatureControllerTest {
     @Test
     public void addingNewTemperatureInformation() {
         String probeId = "1";
-        int temperature = 20;
+        double temperature = 20d;
         temperatureController.addTemperatureInformation(probeId, temperature);
         verify(temperatureManager).addNewTemperatureInformationRecord(anyObject());
     }

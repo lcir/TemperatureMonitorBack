@@ -39,7 +39,7 @@ public class TemperaturePeakAspectTest {
 
     @Before
     public void setUp() {
-        temperatureInformation = new TemperatureInformation("1", -30, new DateTime().toDate());
+        temperatureInformation = new TemperatureInformation("1", -30d, new DateTime().toDate());
         joinPoint = this.testingJoinPointFactory();
     }
 

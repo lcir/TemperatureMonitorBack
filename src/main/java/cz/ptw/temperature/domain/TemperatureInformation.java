@@ -13,15 +13,15 @@ import java.util.Date;
 public class TemperatureInformation {
 
     private String probeId;
-    private int temperature = 0;
+    private double temperature = 0d;
     private Date date = new Date();
 
-    public TemperatureInformation(final String probeId, final int temperature, final Date date) {
+    public TemperatureInformation(final String probeId, final double temperature, final Date date) {
         this(probeId, temperature);
         this.date = date;
     }
 
-    public TemperatureInformation(final String probeId, final int temperature) {
+    public TemperatureInformation(final String probeId, final double temperature) {
         this.temperature = temperature;
         this.probeId = probeId;
     }
@@ -37,11 +37,11 @@ public class TemperatureInformation {
         this.probeId = probeId;
     }
 
-    public int getTemperature() {
+    public double getTemperature() {
         return temperature;
     }
 
-    public void setTemperature(int temperature) {
+    public void setTemperature(double temperature) {
         this.temperature = temperature;
     }
 

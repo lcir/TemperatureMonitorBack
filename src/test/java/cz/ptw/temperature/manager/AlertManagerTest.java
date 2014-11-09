@@ -48,7 +48,7 @@ public class AlertManagerTest {
 
     @Before
     public void setUp() throws NoSuchMethodException {
-        temperatureInformation = new TemperatureInformation("1", -30, new DateTime().toDate());
+        temperatureInformation = new TemperatureInformation("1", -30d, new DateTime().toDate());
         createAlertMessage = AlertManagerImpl.class.getDeclaredMethod("createAlertMessage", new Class[]{TemperatureInformation.class});
         createAlertMessage.setAccessible(true);
 

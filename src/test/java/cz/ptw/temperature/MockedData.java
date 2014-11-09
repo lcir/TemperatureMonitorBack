@@ -35,10 +35,10 @@ public class MockedData {
         List<TemperatureInformation> temperatureInformations = new ArrayList<TemperatureInformation>();
 
         for (String probeNumber : probeNumbers) {
-            temperatureInformations.add(new TemperatureInformation(probeNumber, 21, new DateTime().plusDays(0).toDate()));
-            temperatureInformations.add(new TemperatureInformation(probeNumber, 22, new DateTime().plusDays(1).toDate()));
-            temperatureInformations.add(new TemperatureInformation(probeNumber, 23, new DateTime().plusDays(2).toDate()));
-            temperatureInformations.add(new TemperatureInformation(probeNumber, 24, new DateTime().plusDays(3).toDate()));
+            temperatureInformations.add(new TemperatureInformation(probeNumber, 21d, new DateTime().plusDays(0).toDate()));
+            temperatureInformations.add(new TemperatureInformation(probeNumber, 22d, new DateTime().plusDays(1).toDate()));
+            temperatureInformations.add(new TemperatureInformation(probeNumber, 23d, new DateTime().plusDays(2).toDate()));
+            temperatureInformations.add(new TemperatureInformation(probeNumber, 24d, new DateTime().plusDays(3).toDate()));
         }
 
         return temperatureInformations;

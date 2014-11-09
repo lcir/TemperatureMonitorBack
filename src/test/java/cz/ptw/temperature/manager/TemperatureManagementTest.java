@@ -111,7 +111,7 @@ public class TemperatureManagementTest {
     @Test
     public void addNewTemperatureInformationByOneProbe(){
 
-        TemperatureInformation temperatureInformation = new TemperatureInformation("1", -30, new DateTime().toDate());
+        TemperatureInformation temperatureInformation = new TemperatureInformation("1", -30d, new DateTime().toDate());
         temperatureManager.addNewTemperatureInformationRecord(temperatureInformation);
         verify(temperatureDao).saveTemperatureInformationToDb(temperatureInformation);
     }
@@ -122,7 +122,7 @@ public class TemperatureManagementTest {
     @Test
     public void checkTemperatureGotPeak(){
 
-        TemperatureInformation temperatureInformation = new TemperatureInformation("1", -30, new DateTime().toDate());
+        TemperatureInformation temperatureInformation = new TemperatureInformation("1", -30d, new DateTime().toDate());
 
         when(probeManager.showDetailOfProbe(temperatureInformation.getProbeId())).thenReturn(MockedData.initializeFirstProbe());
         temperatureManager.checkTemperatureGetPeak(temperatureInformation);
